@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "local-server-api",
+	"name": "LocalServer API",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "在本地虚拟一个服务器并提供API接口，供外部应用调用接口实现对Obsidian文件的增删改查。",
+	"author": "一只小白",
+	"authorUrl": "https://your-website.com",
 	"isDesktopOnly": false
 }

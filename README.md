@@ -1,94 +1,76 @@
-# Obsidian Sample Plugin
+# LocalServer API for Obsidian
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>)
+![GitHub all releases](https://img.shields.io/github/downloads/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>/total)
+![GitHub license](https://img.shields.io/github/license/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>)
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+将您的 Obsidian 知识库变为一个强大的、可编程的本地数据中心。通过本地服务器提供的一套完整的 RESTful API，让您的自动化工具、自定义脚本或任何外部应用都能安全、轻松地与您的笔记进行交互。
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+---
 
-## First time developing plugins?
+## ✨ 功能特性
 
-Quick starting guide for new plugin devs:
+* **安全的本地服务器**: 在本地虚拟一个HTTP服务器，仅在您授权下运行。
+* **完整的笔记 CRUD API**: 提供对笔记的 **创建 (Create)**、**读取 (Read)**、**更新 (Update)** 和 **删除 (Delete)** 全套操作接口。
+* **安全的 API Key 认证**: 所有危险操作均通过 Bearer Token 进行保护，确保您的知识库安全。
+* **灵活的端口配置**: 用户可在设置中自定义服务器运行的端口号。
+* **简单的图形化设置界面**: 无需修改代码，在Obsidian的设置页面即可完成所有配置，包括一键生成和复制API Key。
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+## 📸 插件截图
 
-## Releasing new releases
+**直观、易用的设置面板:**
+![插件设置面板截图](https://raw.githubusercontent.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>/main/images/settings-panel-screenshot.png)
+*(提示: 请将这张截图替换为您自己设置页面的真实截图，并将其存放在您项目仓库的 `images` 目录下)*
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+## 🚀 安装方法
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+### 方法一：从 Obsidian 社区插件市场安装 (推荐)
 
-## Adding your plugin to the community plugin list
+1.  在 Obsidian 中打开 `设置` > `第三方插件`。
+2.  确保“安全模式”处于关闭状态。
+3.  点击 `社区插件市场` > `浏览`。
+4.  搜索 "LocalServer API"。
+5.  点击 `安装` 按钮。
+6.  安装完成后，在“已安装插件”列表中启用本插件。
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+### 方法二：手动安装
 
-## How to use
+1.  从本仓库的 [Releases 页面](https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>/releases) 下载最新的 `main.js`, `manifest.json`, `styles.css` 文件。
+2.  进入您的 Obsidian 知识库的插件目录: `<你的库路径>/.obsidian/plugins/`。
+3.  在此目录下创建一个新的文件夹，命名为 `localserver-api`。
+4.  将下载的三个文件复制到 `localserver-api` 文件夹中。
+5.  重启 Obsidian，然后在“已安装插件”列表中启用本插件。
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+## 🛠️ 如何使用
 
-## Manually installing the plugin
+安装并启用插件后，请按照以下步骤进行配置：
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+1.  在 Obsidian 中打开 `设置` > `第三方插件`。
+2.  找到 "LocalServer API" 并点击其右侧的齿轮图标进入设置页面。
+3.  **启用服务器**: 点击“启用 API 服务器”的总开关。首次启用时，插件会自动为您生成一个安全的 API Key。
+4.  **配置端口 (可选)**: 如果默认端口 `8888` 与您本地其他应用冲突，您可以在此修改为一个新的端口号。
+5.  **获取 API Key**: 在设置页面，您可以直接看到您的 API Key。点击“复制”按钮即可将其用于您的外部应用中。如果怀疑Key已泄露，可以点击“重新生成”来创建一个新的Key。
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+**重要提示**: 修改任何设置（如开关、端口号）后，建议您在“已安装插件”列表中**禁用并重新启用**本插件，以确保所有设置都已生效。
 
-## Funding URL
+## 👨‍💻 致开发者：API 文档
 
-You can include funding URLs where people who use your plugin can financially support it.
+本插件的核心价值在于其提供的 RESTful API。我们为所有外部应用开发者准备了一份详尽的接口文档，其中包含了认证细节、所有端点的说明、请求/响应格式以及 `curl` 测试示例。
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+**[➡️ 点击此处查看详细的API接口文档](API.md)**
+*(提示: 请将我们之前生成的API文档内容保存为一个名为 `API.md` 的文件，并放在项目根目录)*
 
-```json
+**快速测试服务器状态 (无需认证):**
+```bash
+curl http://localhost:8888/status
+
+如果服务器正常运行，它将返回:
 {
-    "fundingUrl": "https://buymeacoffee.com"
+  "status": "ok",
+  "message": "LocalServer-API is running"
 }
-```
+📄 许可证
+本插件使用 MIT 许可证。
 
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+🙏 致谢
+感谢 Obsidian 团队创造了如此优秀、可扩展的平台。
