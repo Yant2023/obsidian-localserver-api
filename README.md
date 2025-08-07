@@ -19,8 +19,7 @@
 ## 📸 插件截图
 
 **直观、易用的设置面板:**
-![插件设置面板截图](https://raw.githubusercontent.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO_NAME>/main/images/settings-panel-screenshot.png)
-*(提示: 请将这张截图替换为您自己设置页面的真实截图，并将其存放在您项目仓库的 `images` 目录下)*
+![插件设置面板截图](https://github.com/Yant2023/obsidian-localserver-api/blob/main/images/settings-panel-screenshot.png)
 
 ## 🚀 安装方法
 
