@@ -1,7 +1,7 @@
 {
   "name": "local-server-api",
   "version": "1.0.0",
-  "description": "在本地虚拟一个服务器并提供API接口，供外部应用调用接口实现对Obsidian文件的增删改查。",
+  "description": "Runs a local server with a RESTful API to manage your Obsidian notes programmatically.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",
@@ -14,9 +14,13 @@
     "rest-api",
     "local-server"
   ],
-  "author": "一只小白",
+  "author": "Yant2023",
   "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/node": "^16.11.6",
     "@typescript-eslint/eslint-plugin": "5.29.0",
     "@typescript-eslint/parser": "5.29.0",

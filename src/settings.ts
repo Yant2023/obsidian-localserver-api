@@ -27,12 +27,12 @@ export class ServerSettingTab extends PluginSettingTab {
 
 		containerEl.empty(); // 清空设置页面，防止重复渲染
 
-		containerEl.createEl('h2', { text: 'LocalServer API 设置' });
+		containerEl.createEl('h2', { text: 'LocalServer API Settings' });
 
 		// 1. 启用/禁用插件的总开关
 		new Setting(containerEl)
-			.setName('启用 API 服务器')
-			.setDesc('打开或关闭本地HTTP服务器。关闭后，所有API将无法访问。')
+			.setName('Enable API Server')
+			.setDesc('Turn the local HTTP server on or off. When off, all APIs will be inaccessible.')
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.enabled)
 				.onChange(async (value) => {
@@ -48,20 +48,20 @@ export class ServerSettingTab extends PluginSettingTab {
 			// 2. API Key 管理
 			new Setting(containerEl)
 				.setName('API Key')
-				.setDesc('用于访问API的安全令牌。请妥善保管，不要泄露。')
+				.setDesc('The security token for accessing the API. Keep it safe and do not share it.')
 				.addText(text => text
 					.setValue(this.plugin.settings.apiKey)
 					.setDisabled(true) // API Key输入框设为只读
 					.inputEl.style.width = '350px')
 				.addButton(button => button
-					.setButtonText('复制')
-					.setTooltip('复制API Key到剪贴板')
+					.setButtonText('Copy')
+					.setTooltip('Copy API Key to clipboard')
 					.onClick(() => {
 						navigator.clipboard.writeText(this.plugin.settings.apiKey);
 					}))
 				.addButton(button => button
-					.setButtonText('重新生成')
-					.setTooltip('生成一个新的API Key，旧的将立即失效')
+					.setButtonText('Regenerate')
+					.setTooltip('Generate a new API Key. The old one will become invalid immediately.')
 					.onClick(async () => {
 						this.plugin.settings.apiKey = this.generateApiKey();
 						await this.plugin.saveSettings();
@@ -70,10 +70,10 @@ export class ServerSettingTab extends PluginSettingTab {
 
 			// 3. 端口号配置
 			new Setting(containerEl)
-				.setName('服务器端口')
-				.setDesc('API服务器监听的端口号。修改后需要重启插件才能生效。')
+				.setName('Server Port')
+				.setDesc('The port number for the API server to listen on. Requires a plugin restart to take effect.')
 				.addText(text => text
-					.setPlaceholder('例如: 8888')
+					.setPlaceholder('e.g., 8888')
 					.setValue(this.plugin.settings.port.toString())
 					.onChange(async (value) => {
 						// 将输入转换为数字
@@ -85,7 +85,7 @@ export class ServerSettingTab extends PluginSettingTab {
 						}
 					}));
 		} else {
-			containerEl.createEl('p', { text: '服务器已禁用。请先启用服务器以进行其他配置。' });
+			containerEl.createEl('p', { text: 'Server is disabled. Please enable it to see more options.' });
 		}
 	}
 }
