@@ -3,8 +3,9 @@
 	"name": "LocalServer API",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "在本地虚拟一个服务器并提供API接口，供外部应用调用接口实现对Obsidian文件的增删改查。",
-	"author": "一只小白",
-	"authorUrl": "https://your-website.com",
+	"description": "Runs a local server with a RESTful API, allowing external applications to programmatically manage notes in your Obsidian vault.",
+	"author": "Yant2023",
+	"authorUrl": "https://github.com/Yant2023",
 	"isDesktopOnly": false
-}
+  }
+  
